@@ -1,0 +1,238 @@
+<!--Interactive Story-->
+<h1 style="color: #05d327;">Ashes of Creation</h1>
+<h2 id=title style="color: #f02091;">Your Story Begins</h2>
+<p id=respT></p>
+<p id=prevT>Placeholder</p>
+<p id=introP>Placeholder</p>
+<!-- <p>Having come of age you are thrust to the forefront of this uncertain time. Great peril surrounds, but also great opportunity. With your unique abilities you are positioned to thrive and change the fate of the world. You burn with anticipation to journey to the heart of the conflicted lands. Recognizing your potential, the High Elder has summoned you to answer a single question before you begin your travels. Now is a time for introspection.</p>
+<p>You are asked, "Why do you wish to go?"</p> -->
+<p id=choose><u>Choose your answer.</u></p>
+<input id="results" type="button" onclick="window.location.href='scoring.htm';" value="View Results" />
+<p><input id="selectiona" onclick="document.getElementById('conf').disabled=false;" name="answer" type="radio" value="selectiona" /> <label for="selectiona">a</label><br /><br />
+ <input id="selectionb" onclick="document.getElementById('conf').disabled=false;" name="answer" type="radio" value="selectionb" /> <label for="selectionb">b</label>
+
+<br><br><input id="conf" onclick="saveAnswer(); storyloop++; updateStory();" disabled=true type="button" value="Confirm" />
+  <p> </p>
+<br /><br /><br /> <input type="button" value="Restart" /></p>
+
+
+<script type="application/json" id="story">
+[
+{
+    "title":"Your Story Begins",
+    "intro":"You are asked, \"Why do you wish to go?\"",
+    "answer0":  "\"I must go.  Are we to abandon our people to the ravages of war and let chaos rule?  No!  We are all called to strive and make our mark; to do our utmost to restore order.  Whether we reforge alliances or drive our enemies to heel is for them to choose.\"",
+    "answer1":  "\"Our window of opportunity is small and shrinking.  Passivity will only lead to our subjugation.  I must strike out to discover the hidden places, find relics to aid us, and tip fate's balance in our favor.  Though war burns all about us we can sift the ashes and gain the advantage while we may.\"",
+    "response0": "The High Elder's gaze pierces you for a breathless heartbeat.  Then, with a slight nod the proclaimation is given.  \"So you have chosen.\"",
+    "response1": "The High Elder's gaze pierces you for a breathless heartbeat.  Then, with a slight nod the proclaimation is given.  \"So you have chosen.\""
+},
+{
+    "title":"The First Step",
+    "intro": "You lay in provisions and prepare to travel, saying goodbye to the friends you will leave behind.  One asks you, \"Will you sail the Wild Sea, or climb for Ardent Pass through the Fjallgarðurinn?\"",
+    "answer0": "\"The storms on open water may pose the greater risk in this season, but I will reach my goal sooner.\"",
+    "answer1": "\"The mountains have always been my home, and though the climb may be wearying my goal will always be in sight.\"",
+    "response0": "Through careful planning and one narrow escape from a band of merfolk raiders you arrive at your destination, thankful to have solid ground underfoot again.",
+    "response1": "With cunning and valor you skirt a large enemy encampment, fighting off a scouting party to make free for the pass.  The downhill trek provides welcome relief as you set your sights on a distant coastal town."
+},
+{
+    "title":"Highways and Byways",
+    "intro": "Anxious to be away from the fishing village, you bid farewell to your traveling companions and restock provisions for the next leg of your journey.  The broad road gradually dwindles as byways split off to lesser destinations.  You arrive at a fork that marks your first unplanned travel decision.  The path to the right is more heavily traveled, suggesting a common trade route.  However, the left path should also be navigable since you are not burdened with a cart.",
+    "answer0": "Select the right hand, more traveled path.",
+    "answer1": "Select the left hand, smaller path.",
+    "response0": "You pass several slow beast-driven wagons, and are happy to cross paths with a roving Canticle that reports the way ahead clear of bandits.",
+    "response1": "You are grateful to be away from the bustle of people.  The fresh air alone is sufficient reward."
+},
+{
+    "title":"Brook and Wood",
+    "intro": "The path diverges again and you may opt to hike along the banks of a babbling stream or weave through the still forest.",
+    "answer0": "Be soothed by the comforting sounds of running water.",
+    "answer1": "Enjoy the hush of the tall forest.",
+    "response0": "The tinkle of water on rocks and rhythmic sparkle of sunlight glistening on the surface form a magical song that soon has you humming along.  Perhaps the myths of sylphs may be more than legend.",
+    "response1": "After hours of virtual silence, you suddenly pass through an unseen barrier.  The usual sounds of woodland creatures are shocking by comparison.  You stop and turn to look for a demarcation line, but none is to be seen.  You hurry on rather than returning to the unnatural quiet."
+},
+{
+    "title":"Danger Ahead",
+    "intro": "In this unfamiliar territory you seem to have lost the main way.  In order to reach your next stop you must proceed overland.  Odd scraping noises hint at potential danger.  The ridge crest will provide a better vantage, but has little foraging potential and will leave you exposed.  The fertile valley is more easily passable and offers greater concealment to you but also to any enemies you might encounter.",
+    "answer0": "Take to the heights in hopes that forewarning will forearm you.",
+    "answer1": "Forge through the valley, ready to meet battle if you encounter it.",
+    "response0": "An unusually large armored marsupial advances on you menacingly from behind an outcropping.  However, it proves little challenge as you dispatch it from afar.  You will eat well tonight.",
+    "response1": "Rounding a bend, you exchange mutual suprise with an unusually large armored marsupial.  Territorially threatened, it springs toward you.  However, having prepared for this moment it proves no match for your skill and prowess.  You soon have it roasting on a spit."
+},
+{
+    "title":"The Sheer Face",
+    "intro": "You come to a great cliff barrier.  You lack the specialized gear needed to climb, and are reluctant to backtrack or spend days seeking a way around.  Keenly you spy an accessible cavity and stoop inside.  The cave mouth opens into an irregular cavern that wends uphill into the earth.  Passing many beautiful formations, you begin to see signs making it obvious that others have passed this way before.  Soon the influence of craftsmanship becomes unmistakable as you are faced with a choice of directions.  Above and to the left a carved tunnel set with sturdy rectangular blocks proceeds through a straight bore.  Slightly below and to the right, delicate crystals appear in a similarly sized passageway.  Both corridors lead toward your destination.",
+    "answer0": "Enter the carved rock tunnel, trusting to the engineering skills of those that created it.",
+    "answer1": "Proceed through the natural cave, preferring the asymmetry of the untouched formations.",
+    "response0": "After a short time your heart sinks as you come across a scene of carnage.  A Dunirran work party has been ambushed by Tulnar renegades.  The Tulnar have underestimated the resilience of the dwarves, however, and the skirmish has taken its toll on the raiders as well.  Realizing that your arrival will turn the odds against them, the Tulnar abandon some of their heavier belongings and flee the scene.  Panting with weariness and mournful of their dead, the Dunir are nonetheless grateful for your timely intervention.  Having little use for the Tulnarran leavings, they offer you first choice as a means of reward.",
+    "response1": "After a short time your skin prickles as you hear a desperate keening from ahead.  You approach cautiously and find a sobbing Nikuan sitting alone in the dark among the stalagmites.  Marvelling at the odds of finding such a person so far from shore and family, you offer aid.  The grateful dwarf explains his misfortunate separation and loss of hope in finding the way out of the cave system.  He agrees to provide a finely crafted item in exchange for assistance finding a way out, to which you graciously agree."
+},
+{
+    "title":"Just Reward",
+    "intro": "You have the choice of an exquisitely crafted set of protective bracers, or an amulet containing a gently pulsing keystone.  Both items would significantly augment the defenses provided by your rudimentary equipment.",
+    "answer0": "Select the bracers, protecting some of your most vulnerable locations.",
+    "answer1": "Select the amulet, confident in your ability to activate it at will.",
+    "response0": "Parting ways at the end of the tunnel, you again offer your thanks for the reward.  You take some measure of pride in having successfully navigated the cliff obstacle.",
+    "response1": "Parting ways at the end of the tunnel, you again offer your thanks for the reward.  You take some measure of pride in having successfully navigated the cliff obstacle."
+},
+{
+    "title":"Peace Before War",
+    "intro": "Now that you have reached the war torn lands you must be vigilant for threats.  You travel until late afternoon, and spot a camp site ahead.  Approaching cautiously, you observe that you have found day tents for two Kaelar and three Ren'Kai.  They seem to be sharing the camp peaceably.  After making introductions, they invite you pitch your tent with them for the night.  You learn through conversation that the humans are traveling to find work in the metropolis of Tael-Nekkara, and the orcs are journeying there to study battle meditations.  This city suits your purposes as a destination as well.\n The two parties ask if you would like to accompany them for the remainder of the journey to the city.",
+    "answer0": "\"Your offer is kind, but I need to get the lay of the land before proceeding directly to the city.  There are several sites I wish to explore first.\"",
+    "answer1": "\"Agreed, we will all benefit from traveling together.  I will accompany you to the gates of Tael-Nekkara.\"",
+    "response0": "You spend several days investigating the outskirts of the huge city.  Its tall spires can be seen from a great distance.  You hear rumors of mercenary bands forming to profit from the war's voracious appetite for fresh combatants.  These opportunities sound like a perfect way to gain a foothold in the region.",
+    "response1": "As you travel with the group, the Ren'Kai speak of independent mercenary groups forming to supplement the royal armies of Tael-Nekkara. You make note of several contacts that will be worth pursuing once you reach the city.  Soon its tall spires tower above you."
+},
+{
+    "title":"Mercenary Options",
+    "intro": "The options for mercenary endeavors are myriad.  You can opt for one of the established militia with inspiring names such as the Battlehammer Brigade under the semi-retired army captain Jeroun Stout Arm, the Whispering Mantis Cadre organized by the Red Monks, and the Unstoppable Thunderbolt comprised of paired magic and spear wielders.  Alternatively, you can use your modest fortune to hire and command your own free mercenary squad.",
+    "answer0": "Join up with the most powerful, best paid private army that fits your goals and skills.",
+    "answer1": "Select the most elite free agents to work under your direction.",
+    "response0": "The recruiter is skeptical, but you soon allay any doubts as you best three opponents in successive practice matches.  You are hired on the spot and join your top choice of military companies.",
+    "response1": "You post notices and spread the word that you seek the best for your new team.  You select the top candidates based on their performance in practice matches, but only hire those that prove they can hold their own against you."
+},
+{
+    "title":"The Mission",
+    "intro": "Mercenaries do not follow rigid orders like a regular army.  You have the option to select the next mission for your team.  You narrow the choice to two possibilities.  A rival military band has recently raided the pewter works of a nearby township, killing the craftsmen and looting their prized statuettes.  In their weakened state the remaining mercenaries would be no match for you, and by law you could claim the valuable figures to split as profits for you and your team.  Alternatively, the Pintra, a minor religious sect, is under siege by Py'Rai archers.  While they would have little to offer as reward, the sect is favored by the local monarchy.  Breaking the seige could win you friends among the clergy and royalty.",
+    "answer0": "It's time to eliminate the competition.  Mow down those thieves and earn your rightful profit.",
+    "answer1": "Holding unpopular beliefs is no reason to fall victim to persecution.  Save the Pintra and let friendship be its own reward.",
+    "response0": "In the dead of night you unleash your attack on the treacherous bandits.  The few that escape are unlikely to remain in the area.  The battle is yours!  It seems that the foolish raiders had already melted down many of the fine statuettes, but you should turn a good profit on the remaining ones.",
+    "response1": "With careful scouting you identify a terrain advantage.  Before they are aware of your presence, you smash into the ranks of Py'Rai, who flee in disorganized panic.  The battle is yours!  As expected, the Pintra have little of value to defray your expenses.  However, they offer several crates of steel cast seven-pointed star symbols.  These have some obscure religious significance.  Perhaps they can be sold for some nominal value to those willing to distribute them to the faithful in the city.  If nothing else, you have gained favor with this group and the local rulers."
+},
+{
+    "title":"Market Task",
+    "intro": "The responsibility to sell the metal artworks falls to you.  You try your luck at the smaller of the two market districts in Tael-Nekkara.  One merchant shows immediate interest.  She advises that she does not deal in these objects directly, but is willing to serve as a broker with one of her contacts for a modest commission.  Your unfamiliarity with commerce in the city puts you at a disadvantage.  You are not certain you wish to part with an additional investment, but you may not have other opportunities to unload these goods.",
+    "answer0": "Agree to the deal, but follow the merchant after you pay to ensure that you are not double-crossed.",
+    "answer1": "Congenially hand over the money and agree to meet the merchant and ultimate buyer tomorrow.",
+    "response0": "With the help of a pair of streetwise teenagers, you tail the merchant to the back door of a funeral home.  From a nearby rooftop vantage, you overhear plans to sieze your trove, leaving you bloodied or worse!  They prepare to leave in a cart to and finalize their nefarious plans.",
+    "response1": "Hoping you have not been suckered, you pay the advance commission and plan to meet the buyer the following evening.  When you arrive, you are relieved to find that the buyer is a reputable private collector paying generous sums to take possession of your goods.  You help load the last of the crates onto a cart and call out your thanks as the collector drives away.  Realizing that he has forgotten to take the two sample pieces agreed as part of your sale, you hurry to his home to deliver them.  Upon arrival you see that he is being threatened at knifepoint by a pair thieves intent on stealing the newly purchased valuables."
+},
+{
+    "title":"Waylaid",
+    "intro": "You must decide quickly.  The thieves need to be stopped, but you are outnumbered two to one.",
+    "answer0": "Wait for the opportunity to to gain the upper hand.  Make preparations to ensure success.",
+    "answer1": "Act immediately.  Make sure they don't get away.",
+    "response0": "You wait until the thieves have left, tracking them to a warehouse on the far side of town.",
+    "response1": "You leap to attack, shouting a challenge.  The thieves whirl to face you with knives drawn.  You ready yourself for a tough fight, but an unseen third thief entangles you in a net.  Lanterns begin to shine as curious neighbors peek out their windows to view the source of the commotion.  The thieves make good their escape, driving the cart into the night.  Frustrated but not dispirited, you eventually disentangle yourself from the net and follow the cart tracks through the mud to a large warehouse."
+},
+{
+    "title":"The Night Raid",
+    "intro": "You report your findings to the constabulary.  The head constable arranges for a raid that same night.  Unwilling to be relagated to the sidelines, you insist on pursuing the matter to its conclusion.  Gathering just before dawn, the main force approaches the front and rear entrances while you and two patrol officers cover a side exit. \n One of the officers apologizes and departs to relieve herself, leaving you alone with her lower ranked partner.  Moments later the two conspirators burst from the warehouse side door, flinging the junior officer to the ground and nearly bowling you over as well.  Sensing an advantage, one of the thieves leaps to impale the fallen officer.  You must react instantly.",
+    "answer0": "Protect the officer with everything at your disposal, interposing weapons, defensive magic, debris or even your own body to block the attack.",
+    "answer1": "Strike down the attacker brutally and suddenly, preventing him from finishing his death blow on the prone officer.",
+    "response0": "You strain with effort to turn aside the blow.  You are nearly successful, and the downed officer sustains a lesser wound.  The senior officer returns and between you the thieves are subdued.  You turn to treatment of the junior officer's wound.  He is grateful to retain his life.",
+    "response1": "You launch a devastating attack that rips into the murderous thief just as his own weapon pierces the hapless officer.  Aghast, the remaining thief drops her weapon and surrenders.  The senior officer returns and tends to the wounded officer's injury, declaring it serious but nonfatal."
+},
+{
+    "title":"Sentence for Crime",
+    "intro": "As dawn breaks you reconvene with the head constable.  You learn that stolen property from scores of incidents has been recovered from the warehouse.  These criminals had been preying on the city for months. \n Later you are brought before the magistrate to give an accounting of the night's events so that judgement can be rendered.  As a recognized adjutant key to the success of the operation you have an opportunity to sway the opinion of the court.",
+    "answer0": "Plead for leniency for the criminals.  Although they had stolen and sought to murder, little permanent harm was done.  They have returned all of the purloined materials.  Having learned their lesson, they should now be freed.",
+    "answer1": "Argue that the law be prosecuted to its fullest extent.  With wanton disregard for property and life these criminals would have continued their robbery and violence if left unchecked.  They should suffer the ascribed penalty:  no more and no less.",
+    "response0": "The magistrate sees the wisdom of your advice.  Although the criminals are not immediately released, they are given a lighter sentence and required to make continuing restitution to their victims.",
+    "response1": "The magistrate is moved by your call for justice.  The criminals are imprisoned and will not regain their freedom for years to come."
+},
+{
+    "title":"Fame and Notoriety",
+    "intro": "The prince hears of your heroic deeds on behalf of the city and sends a servant to offer royal thanks.  You are invited to attend a public banquet in your honor, with a dramatic reenactment of your investigation and the ensuing combat.  You consider your response.",
+    "answer0": "The region needs heroes as symbols of order to rally the people against the looming danger.  You agree to join the banquet, understanding the fleetingness of personal fame but the enduring benefit of aspirational figures.",
+    "answer1": "You politely decline, preferring to maintain a low profile.  You encourage the messenger to proceed with the presentation of the play so long as your name is withheld.",
+    "response0": "You attend the banquet and play, and receive toasts and accolades from all of the important people.  You can be sure to capitalize on your name recognition in your future endeavors.  The prince personally thanks you for your role in recent events.",
+    "response1": "You blush as you sit in the audience for the play that recounts your adventures.  Your deeds have been somewhat exaggerated, and the character loosely fashioned after you is given the enigmatic quality of a folk hero due to your anonymity.  Nevertheless, the prince knows your identity and sends a representative to seek you out with more concrete thanks."
+},
+{
+    "title":"A Princely Gift",
+    "intro": "He offers a gift to help you settle into your role in the region.  You may choose either a prime plot of land that you can tame and develop, or a set of expensive equipment that will help you reach your considerable potential.",
+    "answer0": "Now is a good time to put down roots.  With your own estate as a base of operations you can set out to tame the wilds and win the war for your people.",
+    "answer1": "Unparalleled equipment will be the perfect complement to your proven skills and bravery.  There is no challenge you will fail to meet.",
+    "response0": "Your land is granted just as promised.  Arriving there for the first time you feel the thrill of owning your own corner of the world, seeing potential at every turn.",
+    "response1": "Your equipment is provided just as promised.  It has been tailored to fit both your person and your unique abilities, exceeding even your highest expectations.  You can't wait to try it in action."
+},
+{
+    "title":"The Future Is Yours",
+    "intro": "You look to the future with optimism, ready to chart your own course and succeed in all endeavors.  Though the world lies in ashes, you will create an unrivaled legacy.",
+    "answer0": "End"
+}
+]
+
+</script>
+
+<script type="text/javascript">
+function updateStory()
+   {
+   var rb = document.getElementsByName("answer");
+   var labelarray = rb[0].parentNode.getElementsByTagName('label');
+   document.getElementById("title").innerHTML = story[storyloop].title;
+   var cp = document.getElementById("introP");
+   cp.innerHTML = story[storyloop].intro;
+   if (story[storyloop].answer0 == "End")
+      {
+       sessionStorage.setItem("score", JSON.stringify(score));
+       document.getElementById("selectiona").style.visibility = "hidden";
+       document.getElementById("selectionb").style.visibility = "hidden";
+       document.getElementById("conf").style.visibility = "hidden";
+       document.getElementById("choose").innerHTML = "<u>So you have chosen.</u>";
+       document.getElementById("results").style.visibility = "visible";
+       labelarray[0].innerHTML = "";
+       labelarray[1].innerHTML = "";
+//              window.location.href='scoring.htm';
+
+      }
+   else
+      {
+      labelarray[0].innerHTML = story[storyloop].answer0;
+      labelarray[1].innerHTML = story[storyloop].answer1;
+      }
+   }
+
+function saveAnswer()
+   {
+//   var rb = document.getElementsByName("answer");
+   var ra = document.getElementById("selectiona");
+   var rb = document.getElementById("selectionb");
+   var rp = document.getElementById("respT");
+   var cp = document.getElementById("prevT");
+//   var pTxt = "==> ";
+
+   if(ra.checked)
+   {
+//    var aTxt = story[storyloop].answer0;
+//    pTxt.concat(aTxt);
+//    alert(pTxt);
+    score[storyloop] = maxScore;
+    rp.innerHTML = "==> " + story[storyloop].answer0;
+    cp.innerHTML = story[storyloop].response0;
+//    rp.innerHTML = story[storyloop].response0;
+    ra.checked = false;
+   }
+   else
+   {
+    score[storyloop] = minScore;
+    rp.innerHTML = "==> " + story[storyloop].answer1;
+    cp.innerHTML = story[storyloop].response1;
+//    rp.innerHTML = story[storyloop].response1;
+    rb.checked = false;
+   }
+   document.getElementById('conf').disabled=true;
+   }
+   
+   try{
+       var story = JSON.parse(document.getElementById('story').innerHTML);
+   }
+   catch(err){
+    alert(err.message);
+   }
+   
+   var score = [];
+   const maxScore = 5;
+   const minScore = 0;
+   var storyloop = 0;
+   var cp = document.getElementById("prevT");
+   cp.innerHTML = "Peace has been shattered.The tenuous truce has dissolved, yielding to raids and open hostility.  The last hope of alliance among the four great races of Verra has perished with the slaughter of the great council.  Recriminations are rampant with no forum for civil resolution.  Ancient evils have taken note and even nowlay plots to rise and conquer.  Once jealously guarded artifacts have been stripped of defenses as armies and factions surge to the battlefield. \n Having come of age you are thrust to the forefront of this uncertain time.  Great peril surrounds, but also great opportunity.  With your unique abilities you are positioned to thrive and change the fate of the world.  You burn with anticipation to journey to the heart of the conflicted lands.  Recognizing your potential, the High Elder has summoned you to answer a single question before you begin your travels.  Now is a time for introspection.";
+   updateStory();
+   document.getElementById("results").style.visibility = "hidden";
+//   var cp = document.getElementById("introP");
+//   cp.innerHTML = story[storyloop].intro;
+//    var rb = document.getElementsByName("answer");
+//    var labelarray = rb[0].parentNode.getElementsByTagName('label');
+//    labelarray[0].innerHTML = story[storyloop].answer0;
+//    labelarray[1].innerHTML = story[storyloop].answer1;
+  </script>
