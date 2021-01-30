@@ -1,0 +1,108 @@
+<!--Character Selector-->
+<h1 style="color: #05d327;">Ashes of Creation</h1>
+<p>Based on your choices, your preferred class is</p>
+<h2 id=fullClass style="color: #f02091;">Class</h2>
+<h2 id=archetypes style="color: #d0d000;">Archetypes</h2>
+<p></p>
+<h2 id=priClass style="color: #f02091;">Primary Archetype</h2>
+<p id=priDesc></p>
+<h2 id=secClass style="color: #f02091;">Secondary Archetype</h2>
+<p id=secDesc></p>
+<p id=detInfo></p>
+<img src = "ashesclasses.jpg" alt="Classes">
+
+<script type="text/javascript">
+    var score = JSON.parse(sessionStorage.getItem("score"));
+    const fighter = 0, tank = 1, rogue = 2, ranger = 3, mage = 4, summoner = 5, cleric = 6, bard = 7;
+    const duty = 0, land = 1, populated = 2, loud = 3, high = 4, natural = 5, might = 6, group = 7, command = 8, wealth = 9, trust = 10, patience = 11, offense = 12, forgiveness = 13, pride = 14, estate = 15;
+    var affinity = [];
+    affinity[fighter]  = [2,2,3,4,1,3,5,4,5,3,2,1,5,1,3,0];
+    affinity[tank]     = [4,4,3,4,0,2,4,5,2,3,3,3,0,2,2,3];
+    affinity[rogue]    = [0,2,3,0,1,1,4,3,2,5,1,4,5,0,1,3];
+    affinity[ranger]   = [1,5,0,1,5,5,4,1,3,3,2,5,4,2,1,0];
+    affinity[mage]     = [2,1,4,3,3,4,0,3,3,4,2,2,2,2,3,1];
+    affinity[summoner] = [3,3,2,3,2,3,0,2,5,3,1,2,3,2,4,2];
+    affinity[cleric]   = [4,3,4,1,2,2,1,5,0,0,4,4,0,4,0,4];
+    affinity[bard]     = [1,1,5,5,2,1,1,5,0,4,4,4,1,3,5,3];
+    const archnames = ["Fighter", "Tank", "Rogue", "Ranger", "Mage", "Summoner", "Cleric", "Bard"];
+    var classnames = [];
+    classnames[fighter]   = ["Weapon Master", "Dreadnought", "Shadowblade", "Hunter", "Spellsword", "Bladecaller", "Highsword", "Bladedancer"];
+    classnames[tank]   = ["Knight", "Guardian", "Nightshield", "Warden", "Spellshield", "Keeper", "Paladin", "Argent"];
+    classnames[rogue]   = ["Duelist", "Shadow Guardian", "Assassin", "Predator", "Nightspell", "Shadow Lord", "Cultist", "Charlatan"];
+    classnames[ranger]   = ["Strider", "Sentinel", "Scout", "Hawkeye", "Scion", "Falconer", "Soulbow", "Bowsinger"];
+    classnames[mage]   = ["Battle Mage", "Spellstone", "Shadow Caster", "Spellhunter", "Archwizard", "Warlock", "Acolyte", "Sorcerer"];
+    classnames[summoner]   = ["Wild Blade", "Brood Warden", "Shadowmancer", "Beastmaster", "Spellmancer", "Conjurer", "Necromancer", "Enchanter"];
+    classnames[cleric]   = ["Templar", "Apostle", "Shadow Disciple", "Protector", "Oracle", "Shaman", "High Priest", "Scryer"];
+    classnames[bard]   = ["Tellsword", "Siren", "Trickster", "Song Warden", "Magician", "Songcaller", "Soul Weaver", "Minstrel"];
+    
+    var archDescriptions = [];
+    archDescriptions[fighter] = "An expert in physical combat, you have mastered many weapons and strike fear in the heart of your foes."
+    archDescriptions[tank] = "You control the fight to help your party mitigate incoming damage, and to dictate who is getting hit.  You can take an unconscionable amount of punishment, and woe to those who ignore your commands."
+    archDescriptions[rogue] = "A master of opportunity, you use skill, positioning and the environment to dish out frightening amounts of damage.  In downtime, you provide solity utility, helping your friends navigate dangers otherwise unseen."
+    archDescriptions[ranger] = "Death from afar is your raison d'etre.  A master of the bow and ranged combat, you are more than happy to let others get their hands dirty.  No one else has such a keen eye in natural environments."
+    archDescriptions[mage] = "In a world of high magic, no party would be complete without you.  A master of the arcane, you bring terrible elements to bear in devastating spells.  If reality needs changing in some fashion, you are the one to help."
+    archDescriptions[summoner] = "You are never alone.  Two hands are good, but in your opinion four hands are always better.  With the right tools for every job, there's no situation you can't handle."
+    archDescriptions[cleric] = "In such a dangerous world, you are never wanting for friends.  You can protect your allies in a number of ways, and when necessary, snuff the life out of others.  A master over the very essense of life, you can sense the broken and corrupted."
+    archDescriptions[bard] = "Truly a force multiplier, you weave songs of glory and conquest, inspiring your comrades to ever greater heights.  You know secret and powerful words and are able to speak into being terrible nightmares, or to convince foes to become friends."
+    var deltaList = [];
+    var sortList = [];
+    for (playerclass = fighter; playerclass < bard+1;playerclass++)
+        {
+        deltaList[playerclass] = 0;
+        for (m = 0; m < affinity[fighter].length; m++)
+            {
+            if (!isNaN(score[m]))
+                {
+                deltaList[playerclass] += (score[m] - affinity[playerclass][m]) * (score[m] - affinity[playerclass][m]);
+                }
+            }
+        }
+        
+    // Find main archetype
+    var mainClass = deltaList.indexOf(Math.min.apply(Math,deltaList));
+    var mainclassname = archnames[mainClass];
+    
+    // Find secondary archetype
+    sortList = JSON.parse(JSON.stringify(deltaList));
+    sortList.sort(function(a, b){return a-b});
+    var secondHighest = sortList[1];
+    var deltaRange = sortList[7];
+    var secondClass = deltaList.indexOf(secondHighest);
+    var mainPct = Math.round(100 * (deltaRange - deltaList[mainClass])/(deltaRange));
+    var secPct = Math.round(100 * (deltaRange - deltaList[secondClass])/(deltaRange));
+    var secondclassname = archnames[secondClass];
+    
+    // Override if main archetype is overwhelmingly favored
+    if (mainPct - secPct > 20)
+        {
+        secondClass = mainClass;
+        secPct = mainPct - 19;
+        secondclassname = mainclassname;
+        }
+//    alert("Range = " + deltaRange + " Main = " + mainPct + "% Secondary = " + secPct + "%");
+    
+    // Find full class
+    fullclassname = classnames[mainClass][secondClass];
+
+    // Show results
+    document.getElementById("fullClass").innerHTML = fullclassname;
+    document.getElementById("archetypes").innerHTML = mainclassname + " (" + mainPct + "%) / " + secondclassname + " (" + secPct + "%)";
+    document.getElementById("priClass").innerHTML = mainclassname;
+    document.getElementById("priDesc").innerHTML = archDescriptions[mainClass];
+    if (mainClass == secondClass)
+        {
+        document.getElementById("secClass").innerHTML = "";
+        document.getElementById("secDesc").innerHTML = "";
+        }
+    else
+        {
+        document.getElementById("secClass").innerHTML = secondclassname;
+        document.getElementById("secDesc").innerHTML = archDescriptions[secondClass];
+        }
+//    document.getElementById("detInfo").innerHTML = deltaList;
+    
+//    alert(mainclassname);
+    
+</script>
+
+<input type="button" onclick="window.location.href='interactivestory.htm';" value="Proceed" />
