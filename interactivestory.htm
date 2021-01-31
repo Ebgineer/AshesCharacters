@@ -7,7 +7,7 @@
 <!-- <p>Having come of age you are thrust to the forefront of this uncertain time. Great peril surrounds, but also great opportunity. With your unique abilities you are positioned to thrive and change the fate of the world. You burn with anticipation to journey to the heart of the conflicted lands. Recognizing your potential, the High Elder has summoned you to answer a single question before you begin your travels. Now is a time for introspection.</p>
 <p>You are asked, "Why do you wish to go?"</p> -->
 <p id=choose><u>Choose your answer.</u></p>
-<input id="results" type="button" onclick="window.location.href='scoring.htm';" value="View Results" />
+<input id="results" type="button" onclick="window.location.href='https://htmlpreview.github.io/?https://github.com/Ebgineer/AshesCharacters/blob/main/scoring.htm';" value="View Results" />
 <p><input id="selectiona" onclick="document.getElementById('conf').disabled=false;" name="answer" type="radio" value="selectiona" /> <label for="selectiona">a</label><br /><br />
  <input id="selectionb" onclick="document.getElementById('conf').disabled=false;" name="answer" type="radio" value="selectionb" /> <label for="selectionb">b</label>
 
@@ -194,13 +194,9 @@ function saveAnswer()
 
    if(ra.checked)
    {
-//    var aTxt = story[storyloop].answer0;
-//    pTxt.concat(aTxt);
-//    alert(pTxt);
     score[storyloop] = maxScore;
     rp.innerHTML = "==> " + story[storyloop].answer0;
     cp.innerHTML = story[storyloop].response0;
-//    rp.innerHTML = story[storyloop].response0;
     ra.checked = false;
    }
    else
@@ -208,7 +204,6 @@ function saveAnswer()
     score[storyloop] = minScore;
     rp.innerHTML = "==> " + story[storyloop].answer1;
     cp.innerHTML = story[storyloop].response1;
-//    rp.innerHTML = story[storyloop].response1;
     rb.checked = false;
    }
    document.getElementById('conf').disabled=true;
@@ -229,10 +224,4 @@ function saveAnswer()
    cp.innerHTML = "Peace has been shattered.The tenuous truce has dissolved, yielding to raids and open hostility.  The last hope of alliance among the four great races of Verra has perished with the slaughter of the great council.  Recriminations are rampant with no forum for civil resolution.  Ancient evils have taken note and even nowlay plots to rise and conquer.  Once jealously guarded artifacts have been stripped of defenses as armies and factions surge to the battlefield. \n Having come of age you are thrust to the forefront of this uncertain time.  Great peril surrounds, but also great opportunity.  With your unique abilities you are positioned to thrive and change the fate of the world.  You burn with anticipation to journey to the heart of the conflicted lands.  Recognizing your potential, the High Elder has summoned you to answer a single question before you begin your travels.  Now is a time for introspection.";
    updateStory();
    document.getElementById("results").style.visibility = "hidden";
-//   var cp = document.getElementById("introP");
-//   cp.innerHTML = story[storyloop].intro;
-//    var rb = document.getElementsByName("answer");
-//    var labelarray = rb[0].parentNode.getElementsByTagName('label');
-//    labelarray[0].innerHTML = story[storyloop].answer0;
-//    labelarray[1].innerHTML = story[storyloop].answer1;
   </script>
